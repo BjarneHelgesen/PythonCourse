@@ -1,5 +1,5 @@
 ## What are classes?
-Classes are custom data types. These data types can be similar to built in-data types, (e.g. `int, float, list, tuple, string,` etc.), it can model things from real life, such as books, customers, webpages, databases, text fields, it have some convenience functionionality (e.g. integer 0 to 59 which wraps around), or other uses.     
+Classes are custom data types. These data types can be similar to built in-data types, (such as `int, float, list, tuple, string,` etc.), it can model things from real life, such as books, customers, webpages, databases, text fields, it have some convenience functionionality (e.g. integer 0 to 59 which wraps around), or other uses.     
 
 Classes typically work well to encapsulate (and hide implementation details of) high-level abstractions. 
 
@@ -14,7 +14,11 @@ cancel = Button(“Cancel”)
 
 Built-in types also support implicit initialization, where the object value is inferred. This is not supported for classes, where calling a constructor is the only way to create an object of that class.
 
-Objects are typically a collection of variables (called attributes) and functions (called methods) that operate on the attributes and/or parameters. Methods and attributes are referenced by object name, full stop and then attribute or method name. 
+Objects are typically a collection of variables (called attributes) and functions (called methods) that operate on the attributes and/or parameters. Methods and attributes are referenced by object name, full stop and then attribute or method name. All declared attributes and methods for an object can be listed using the `dir()` function:
+
+```Python
+print("This is a test string")
+```
 
 The example below uses the `__doc__` attribute and the `sort` and `append` methods of a list. 
 ```Python
@@ -71,7 +75,7 @@ def add(a, b):
 ```
 The function above will add ints, floats and complex numbers. It will also concatename strings, lists, tuples as they all have defined behaviour for the plus operator.  
 
-It is a common practice to declare several classes which implement a given interface (a set of attributes and methods), but this interface does not have to be formally defined or enforced. E.g. shapes (circles, squares, rectangles, parallelograms, rhombuses, ellipses, triangles, trapezoids, pentagons, etc.) could conform to an in interface, such as having methods `area()` and `circumference()`. The code using them does not have to know which type they are, as long as they conform to this informal interface.
+It is a common practice to declare several classes which implement a given interface (a set of attributes and methods), but this interface does not have to be formally defined or enforced. E.g. shapes (circles, squares, rectangles, parallelograms, rhombuses, ellipses, triangles, trapezoids, pentagons, etc.) could conform to an in interface, such as having attributes `center_x`, `centery_y` and methods `area()` and `circumference()`. The code using them does not have to know which type they are, as long as they conform to this interface. 
 
 The term Duck Typing comes from the Python practice of not enforcing that a parameter to a function conforms to a given interface before running the code. The Python philosophy is that if the code succeeds, the type was correct. "If it looks like a duck, swims like a duck, and quacks like a duck, then it probably is a duck." 
 
