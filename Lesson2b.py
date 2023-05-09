@@ -1,30 +1,31 @@
 SMALL = "Small"
 LARGE = "Large"
 
-SMALL_PRICE = 50
+SMALL_CRUST = 50
 SMALL_TOPPING = 10
-LARGE_PRICE = 100
+LARGE_CRUST = 100
 LARGE_TOPPING = 20
 
 class Pizza:
     def __init__(self, size):
         """size is SMALL or LARGE"""
-        self.toppings = []
         if size not in (SMALL, LARGE):
             raise ValueError
+        self.toppings = []
         self.size = size
+        if size == LARGE:
+            self.crust_price = LARGE_CRUST
+            self.topping_price = LARGE_TOPPING
+        else:
+            self.crust_price = SMALL_CRUST
+            self.topping_price = SMALL_TOPPING
 
     def add_topping(self, topping):
-        self.toppings.append(topping)
-
-    def calc_price(self, crust_price, topping_price):
-        return crust_price + topping_price * len(self.toppings)
+        self.toppings.append(topping)        
     
     def price(self):
-        if self.size == SMALL:
-            return self.calc_price(SMALL_PRICE, SMALL_TOPPING)
-        return self.calc_price(LARGE_PRICE, LARGE_TOPPING)
-    
+        return self.crust_price + self.topping_price * len(self.toppings)
+        
     
 my_pizza = Pizza(LARGE)
 my_pizza.add_topping("Mozzarella")
