@@ -26,9 +26,7 @@ class Pizza:
         return self.calc_price(LARGE_PRICE, LARGE_TOPPING)
     
     
-
 my_pizza = Pizza(LARGE)
-my_pizza.add_topping("Mozzarella")
 my_pizza.add_topping("Mozzarella")
 my_pizza.add_topping("Pepperoni")
 print(my_pizza.price())
