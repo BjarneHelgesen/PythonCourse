@@ -65,6 +65,12 @@ class Circle:
         self.center_y = center_y
         self.radius = radius
 ```
+Methods on the class can access the attributes thorugh self.  
+Other code can access the attributes through the object variable.  E.g. 
+```Python
+c = Circle(5, 10, 1) # Create a Circle object with c.center_x = 5, c.center_y = 10, c.radius = 1
+print(c.radius) #prints 1
+```
 
 
 ## Polymorphism and Duck Typing
