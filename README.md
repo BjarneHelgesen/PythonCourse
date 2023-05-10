@@ -1,3 +1,6 @@
+# Object oriented python course
+The course builds on procedural Python. Below is the theory covered.  
+
 ## What are classes?
 Classes are custom data types. These data types can be similar to built in-data types, (such as `int, float, list, tuple, string,` etc.), it can model things from real life, such as books, customers, webpages, databases, text fields, it have some convenience functionionality (e.g. integer 0 to 59 which wraps around), or other uses.     
 
