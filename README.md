@@ -1,6 +1,7 @@
 # Object oriented python course
 The course builds on procedural Python. Below is the theory covered.  
 
+
 ## What are classes?
 Classes are custom data types. These data types can be similar to built in-data types, (such as `int, float, list, tuple, string,` etc.), it can model things from real life, such as books, customers, webpages, databases, text fields, it have some convenience functionionality (e.g. integer 0 to 59 which wraps around), or other uses.     
 
@@ -75,7 +76,6 @@ c = Circle(5, 10, 1) # Create a Circle object with c.center_x = 5, c.center_y = 
 print(c.radius) #prints 1
 ```
 
-
 ## Polymorphism and Duck Typing
 Classes support polymorphism; Python  parameters and other variables don't have to be a specific type as long as they have the required attributes and methods. 
 ```Python
@@ -88,3 +88,57 @@ It is a common practice to declare several classes which implement a given inter
 
 The term Duck Typing comes from the Python practice of not enforcing that a parameter to a function conforms to a given interface before running the code. The Python philosophy is that if the code succeeds, the type was correct. "If it looks like a duck, swims like a duck, and quacks like a duck, then it probably is a duck." 
 
+
+## Conditional removal
+If code has many conditions (if statements, etc.) it if often possible to wrap that logic in a separate class. An initialized object of that class can then be referenced without any conditional in either class. 
+
+
+## Magic Methods
+Magic Methods is sometimes called DUNDER (short for Double UNDERscore) functions. We can implement these Magic Methods in our object, and Python will "magically"  understand how to use these. They are typically not  called explicitly.
+
+We have already used Magic Methods __init__ (for initalizing an object) and __doc__ (doc string). 
+
+There are more than 100 Magic Methods in Python. It is common to implment a selected few of them to give the class certain property. It is not common or useful to implement all. 
+
+
+The following Magic Methods are for casting. They don't take any parameters apart from self, and return an object of the requested type.  When these are implemented, Python will be able to cast your object to different types. For instance, print() tries to cast its parameters to string. If the class supports casting to string, the class can control how it is printed. 
+
+```Python
+__bool__
+__float__
+__int__
+__complex__
+__str__
+
+```
+
+> **_Python internals_**: When Python encounters an operator, it converts it to a Magic Method call. 
+Eg. If  two objects of type C are added  ```x = a + b``` is translated into ```x = C.__add__(a,b)```
+
+The Magic Methods for basic operators are: 
+```Python
+__add__   +
+__and__   &
+__contains__ in 
+__eq__ ==
+__floordiv__ // 
+__ge__ >=
+__gt__ > 
+__invert__ ~
+__le__ < 
+__lshift__ <<
+__lt__ <
+__mod__ % 
+__mul__ * 
+__ne__ !=
+__neg__ - (unary)
+__or__ |
+__pow__ **
+__rshift__ >>
+__sub__ - 
+__truediv__ //
+__xor__ ^ 
+```
+These need to be implemented on the leftmost operand. (There are other methods that can be implemented on the rightmost operand)
+There are Magic Methods for in-place operators like +=, /= etc. These Magic Methods are prefixed with an i for in-place. Normally, it is not necessary 
+    
