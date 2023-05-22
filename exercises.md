@@ -23,7 +23,7 @@ a_plus_b = add(a, b)
 minus_a = negate(a)
 ```
 ---
-Create a Pizza class which keeps track of the size and the toppings that are added. Any number of toppings can be added after construction. The price for a small pizza is 50 plus 10 per topping. For a large, the price is 100 plus 20 per topping. 
+Create a Pizza class which keeps track of the size and the toppings that are added. Any number of toppings can be added after construction. The price for a small pizza is 50 plus 10 per topping. For a large pizza, the price is 100 plus 20 per topping. 
 
 ```Python
 my_pizza = Pizza("Large")
