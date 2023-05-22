@@ -113,7 +113,7 @@ __str__
 ```
 
 > **_Python internals_**: When Python encounters an operator, it converts it to a Magic Method call. 
-Eg. If  two objects of type C are added  ```x = a + b``` is translated into ```x = C.__add__(a,b)```
+Here is an example when  two objects of type C are added using the plus operator:  ```x = a + b``` is translated into ```x = C.__add__(a,b)```
 
 The Magic Methods for basic operators are: 
 ```Python
