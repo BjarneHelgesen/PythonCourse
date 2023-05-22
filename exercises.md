@@ -36,3 +36,20 @@ Also make a function that lists the toppings
 
 Are there better ways to create an interface for this? Please improve…
 
+## Lesson 3
+Modify your Pizza class as follows: Create a PizzaSize class for price info for a given Pizza size. 
+Use an object of this class as a parameter during construction of the Pizza class to avoid if statements in the Pizza class
+
+---
+Make it possible to add to vectors using the ‘+’ operator by implementing these methods in the Vector class:
+```Python
+_ _str_ _(self) 
+_ _add_ _(self, other)
+```
+
+Test code: 
+```Python
+q = Vector(1,2)
+r = Vector(100, 200)
+print(q + r)
+```
