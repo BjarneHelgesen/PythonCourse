@@ -53,3 +53,22 @@ q = Vector(1,2)
 r = Vector(100, 200)
 print(q + r)
 ```
+
+## Lesson 4
+Implement an Angle class which has properties for radians and degrees, where both can be read and set. Degrees go from 0 to 360, radians go from 0 to 2*PI. 
+
+Here is test code 
+```Python
+import math
+
+def test_angle():
+    a = Angle() #gives default value of 0 to the angle. 
+    a.radians = math.pi
+    assert a.radians == math.pi
+    assert a.degrees == 180 
+    a.degrees = 17
+    assert a.degrees == 17
+    assert a.radians == 17/360*2*math.pi
+    print("Test ok")
+```    
+
