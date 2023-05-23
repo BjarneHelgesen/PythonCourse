@@ -94,7 +94,7 @@ If code has many conditions (if statements, etc.) it if often possible to wrap t
 
 
 ## Magic Methods
-Magic Methods is sometimes called DUNDER (short for Double UNDERscore) functions. We can implement these Magic Methods in our object, and Python will "magically"  understand how to use these. They are typically not  called explicitly.
+Magic Methods are sometimes called DUNDER (short for Double UNDERscore) functions. We can implement these Magic Methods in our object, and Python will "magically"  understand how to use these. They are typically not  called explicitly.
 
 We have already used Magic Methods __init__ (for initalizing an object) and __doc__ (doc string). 
 
