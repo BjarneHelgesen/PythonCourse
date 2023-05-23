@@ -14,7 +14,7 @@ class Car:
         self.price_history.append(price)
         self._price = price
 
-wreck = Car("Toyota Camry" 1986, 25000)
+wreck = Car("Toyota Camry", 1986, 25000)
 print(wreck.price) 
 
 wreck.price = 20000
