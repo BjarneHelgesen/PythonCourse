@@ -178,3 +178,4 @@ class Employee:
             print("I lost my job")
         self._employed = value
 ```       
+> **Python Convention:** Variable names starting with underscore indicate that it is only meant to be used inside the class. Double underscore will mangle the name so that regular methid calls from outside the class will fail.
