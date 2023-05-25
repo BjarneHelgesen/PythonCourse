@@ -94,7 +94,7 @@ If code has many conditions (if statements, etc.) it if often possible to wrap t
 
 
 ## Magic Methods
-Magic Methods is sometimes called DUNDER (short for Double UNDERscore) functions. We can implement these Magic Methods in our object, and Python will "magically"  understand how to use these. They are typically not  called explicitly.
+Magic Methods are sometimes called DUNDER (short for Double UNDERscore) functions. We can implement these Magic Methods in our object, and Python will "magically"  understand how to use these. They are typically not  called explicitly.
 
 We have already used Magic Methods __init__ (for initalizing an object) and __doc__ (doc string). 
 
@@ -136,9 +136,46 @@ __or__ |
 __pow__ **
 __rshift__ >>
 __sub__ - 
-__truediv__ //
+s__truediv__ //
 __xor__ ^ 
 ```
 These need to be implemented on the leftmost operand. (There are other methods that can be implemented on the rightmost operand)
 There are Magic Methods for in-place operators like +=, /= etc. These Magic Methods are prefixed with an i for in-place. Normally, it is not necessary 
     
+   
+   
+## Decorators
+Decorators modify the behaviour of functions/methods. They are typically written as @-sign plus decorator name on the line above the function declaration. Below is a function called ```myfunc``` with a decorator called ```log```.
+```Python
+@log
+def myfunc():
+    ...
+```  
+## Properties
+The @property decorator converts a method with only self as parameter to a property. Instances of this class can use the method name as if it was an attribute. Without a setter, this acts like a read-only attribute. Below is a read only property called ```incorporated_year```.
+```Python
+class Techni:
+    @property
+    def incorporated_year(self):
+        return 1997
+ 
+techni = Techni()
+print(techni.incorporated_year)
+```       
+A setter is typically declared using a @method-name.setter decorator. In the example below, employed can be set to True or False. 
+```Python
+class Employee:
+    def __init__(self):
+        self._employed = True
+        
+    @property
+    def employed(self):
+        return self._employed
+        
+    @employed.setter
+    def employed(self, value):
+        if self._employed and not value:
+            print("I lost my job")
+        self._employed = value
+```       
+> **Python Convention:** Method/attribute names starting with underscore indicate that they are only meant to be used inside the class. Leading double underscores will mangle the name so that regular access from outside the class will fail.
