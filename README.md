@@ -179,3 +179,55 @@ class Employee:
         self._employed = value
 ```       
 > **Python Convention:** Method/attribute names starting with underscore indicate that they are only meant to be used inside the class. Leading double underscores will mangle the name so that regular access from outside the class will fail.
+
+## Inheritance
+One class get the behavour (methods, attributes, properties, Magic Methods, etc. ) from another class. Below is an example where class B inherits from class A, and ```...``` represents some meaningful class definition.
+
+```Python
+class A:
+   …
+
+class B(A):
+    …
+```
+ 
+
+Terminology: A is called the base class and b is claled the subclass 
+
+When to use: When it is 100% clear that “B is an A”. Overuse of inheritace is a common problem in object oriented programming. 
+
+## Abstract base classes
+An abstract base class can be used to define an interface for a class. This can be used to enforce that all subclasses implement a certain behaviour. The abstract base class ```ABC```is defined in library ```abc```. Note that the library (abc) has a different capitalization from the class (ABC). The normal way to use it is to create a subclass of ```ABC``` and decorate the required methods in this class with ```@abstractmethod```. The implementation of these abstract methods can be just ```pass``` since they should never be executed. Below is an example that uses a ```Vehicle``` class as an ```ABC``` to enforce that all vehicles have a ```get_ticket_price()``` method.
+
+```Python
+from abc import ABC, abstractmethod
+
+class Vehicle(ABC):
+    @abstractmethod
+    def get_ticket_price(self):
+	       pass
+
+class Bus(Vehicle):
+    def get_ticket_price(self):
+        return 42
+
+class Train(Vehicle):
+    def get_ticket_price(self):
+        return 99
+
+	
+def  print_ticket_price(transport):
+    print(transport.get_ticket_price())
+
+t = Train()
+print_ticket_price(t)
+```
+
+## Python libraries
+Python comes with more than 100 pre-installed libraries, listed at https://docs.python.org/3/library/ 
+
+Tens of thousands of other libraries are stored as packages in Python's online package repository called PyPi and these can be installed with the **pip** executable. **pip** stands for Packages Installer for Python. The normal syntax is **pip install \<packagename\>** on the terminal.
+> **If you have more than one Python installation on your computer:**  Execute **pip** from the Python installation you want it on; each installation has its own **pip** and its own set of libraries.  
+
+E.g. in order to install the pygame library, execute: **pip install pygame** in the terminal. 
+**pip** will locate the library on https://PyPi.org and download/install pygame together with any dependencies.
