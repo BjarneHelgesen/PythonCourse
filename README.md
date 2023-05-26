@@ -230,4 +230,4 @@ Tens of thousands of other libraries are stored as packages in Python's online p
 > **If you have more than one Python installation on your computer:**  Execute **pip** from the Python installation you want it on; each installation has its own **pip** and its own set of libraries.  
 
 E.g. in order to install the pygame library, execute: **pip install pygame** in the terminal. 
-**pip** will locate the library on https://PyPi.org and download/install pygame together with any dependencies.
+**pip** will locate pygame on https://PyPi.org and download/install it together with any dependencies.
