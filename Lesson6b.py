@@ -50,7 +50,7 @@ screen = pygame.display.set_mode((600, 400))
 clock = pygame.time.Clock()
 
 background = Element("Maidan600.jpg")
-egg = Element("pysanka-60.png")
+egg = Element("pysanka-60.png", 0, 300)
 
 while True: 
     events = pygame.event.get()
