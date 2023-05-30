@@ -73,5 +73,7 @@ def test_angle():
 ```    
 
 ## Lesson 5 
-Modify Lesson 5b to make an objecet for the the rectangle.
+Modify lesson1.py to use an Abstract Base Class to enforce that all shapes have area() and circumference() methods. 
+
+Modify Lesson 5b to make an object for the the rectangle so the main loop has less knowledge about implementation details.
 
