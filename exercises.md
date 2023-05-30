@@ -72,3 +72,6 @@ def test_angle():
     print("Test ok")
 ```    
 
+## Lesson 5 
+Modify Lesson 5b to make an objecet for the the rectangle.
+
