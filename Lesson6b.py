@@ -4,7 +4,7 @@ pygame.init()
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 
-class Element:
+class Element:   
     def __init__(self, filename, left=0, top=0):
         self.surface = pygame.image.load(filename)
         self.left = left
@@ -26,6 +26,9 @@ class Element:
     def bottom(self):
         return self.top + self.height
     
+    def update(self):
+        self.left += 1
+
     def blit(self):
         rect = pygame.Rect((self.left, self.top), (self.width, self.height))
         screen.blit(self.surface, rect)
@@ -43,7 +46,8 @@ while True:
             exit()
 
     clock.tick(60)
+    egg.update()
+
     background.blit()
-    egg.left += 1
     egg.blit()
     pygame.display.flip()
