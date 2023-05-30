@@ -1,9 +1,6 @@
 import pygame
 pygame.init()
 
-BLACK = (0, 0, 0)
-WHITE = (255, 255, 255)
-
 class Element:   
     def __init__(self, filename, left=0, top=0):
         self.surface = pygame.image.load(filename)

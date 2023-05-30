@@ -43,6 +43,13 @@ class Element:
         rect = pygame.Rect(center_x - width/2 , center_y - height/2, width, height)
         screen.blit(image, rect)
 
+    def collide(self, other):
+        if self.bottom < other.top or other.bottom < self.top: #overlap vertically? 
+            return False
+        if self.right < other.left or other.right < self.left: #overlap horzontally? 
+            return False
+        return True 
+
     def __str__(self):
         return f"({self.left}, {self.top})"
 
@@ -52,48 +59,51 @@ def movement(negative_key, postive_key, value):
     return -keys_pressed[negative_key]*value + keys_pressed[postive_key]*value
  
 
-red_square = Element("maidan600.jpg")
-easter_egg = Element("pysanka-60.png", 100, 50)
-easter_egg.dx = 3
-easter_egg.dy = 0
+
+background = Element("maidan600.jpg")
+egg = Element("pysanka-60.png", 100, 50)
+egg.dx = 3
+egg.dy = 0
 
 trident = Element("trident60.png", 250, HEIGHT-70)
 
 lost = False
-while easter_egg.top <  HEIGHT: 
+while egg.top <  HEIGHT: 
     clock.tick(60)
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
+            pygame.quit()
             exit()
         
     # easter egg movement
-    easter_egg.left += easter_egg.dx
-    easter_egg.dy += 0.2
-    easter_egg.top += easter_egg.dy
-    easter_egg.scale *= 0.999
-    easter_egg.angle += 1
+    egg.left += egg.dx
+    egg.dy += 0.2
+    egg.top += egg.dy
+    egg.angle += 1
 
 
     # easter egg bouncing off side walls 
-    if easter_egg.left < 0 or easter_egg.right > WIDTH:
-        easter_egg.dx = -easter_egg.dx
+    if egg.left < 0 or egg.right > WIDTH:
+        egg.dx = -egg.dx
 
-    #Easter egg bouncing off trident. Trident will freeze when the game is lost. 
+    #Easter egg bouncing off trident. Trident will stop moving when the game is lost. 
     if not lost:
         trident.left += movement(pygame.K_LEFT, pygame.K_RIGHT, 5)
-        if easter_egg.bottom > trident.top + 5:
-            if trident.left > easter_egg.right or trident.right < easter_egg.left:
-                lost = True
-            else:
-                easter_egg.dy = -easter_egg.dy
-                easter_egg.dx = (easter_egg.left - trident.left)/10
-                easter_egg.top = trident.top - easter_egg.height + 5
+        if trident.collide(egg):
+            egg.dy = -egg.dy
+            egg.dx = (egg.left - trident.left)/10
+            egg.top = trident.top - egg.height + 5
 
-    red_square.blit()
-    easter_egg.blit()
+        if egg.bottom > trident.top + 10:
+            lost = True
+    else: 
+        trident.scale *= 0.9
+
+    background.blit()
+    egg.blit()
     trident.blit()
     
     pygame.display.flip()
-
+pygame.quit()
 print("Game over")
