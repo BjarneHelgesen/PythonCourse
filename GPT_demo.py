@@ -23,14 +23,6 @@ class OpenAI_Session:
         self.message_history = [ {"role": "system", "content": context_description} ]
         self.replacements = replacements
 
-    '''
-    def __add__(self, message):
-        """reply = session + message 
-        This is an alias for reply = session.chatCompletion(message) 
-        where session is this object. 
-        Note that string additons are not supported e.g. reply = session + text1 + text2"""
-        return self.chatCompletion(message)
-    '''
     def chatCompletion(self, message):
         self.message_history.append({"role": "user", "content": message})
         chat = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=self.message_history)
@@ -113,6 +105,3 @@ def create_blocks_ui():
 
 ui = create_blocks_ui()
 ui.launch()
-
-
-
