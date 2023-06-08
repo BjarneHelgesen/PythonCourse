@@ -1,11 +1,15 @@
 import pygame
 pygame.init()
 
-class Element:   
+class Element: 
+    all_elements = [] 
+
     def __init__(self, filename, left=0, top=0):
         self.surface = pygame.image.load(filename)
         self.left = left
         self.top = top
+        self.all_elements.append(self)
+
 
     @property
     def width(self):

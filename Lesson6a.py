@@ -59,11 +59,25 @@ def movement(negative_key, postive_key, value):
     return -keys_pressed[negative_key]*value + keys_pressed[postive_key]*value
  
 
+class MovingElement(Element):
+    def __init__(self, filename, left=0, top=0):
+        super().__init__(filename, left, top)
+        self.dx = 0
+        self.dy =0
+
+    def update(self):
+        self.left += self.dx
+        self.top += self.dy
 
 background = Element("maidan600.jpg")
-egg = Element("pysanka-60.png", 100, 50)
+egg = MovingElement("pysanka-60.png", 100, 50)
 egg.dx = 3
-egg.dy = 0
+
+egg_list = []
+for i in range(10):
+    egg = MovingElement(left=i*10, top=i*10)
+    egg.dx = i*5
+    egg_list.append(egg)
 
 trident = Element("trident60.png", 250, HEIGHT-70)
 
@@ -77,9 +91,8 @@ while egg.top <  HEIGHT:
             exit()
         
     # easter egg movement
-    egg.left += egg.dx
     egg.dy += 0.2
-    egg.top += egg.dy
+    egg.update()    
     egg.angle += 1
 
 
