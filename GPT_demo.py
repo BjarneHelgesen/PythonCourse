@@ -2,10 +2,9 @@ import gradio as gr
 import openai
 
 
+############################### OPEN AI SESSION. NO UI DEPENDENCIES ############################### 
 
-############################### TECHNIBOT CORE. NO UI DEPENDENCIES ############################### 
-
-openai.api_key = 'ask-cbnVRSFHkT3YTiwG81pUT3BlbkFJrHPbwRWB732XTHIHkQQc'
+openai.api_key = 'sk-cbnVRSFHkT3YTiwG81pUT3BlbkFJrHPbwRWB732XTHIHkQQca'
 
 CONTEXT = """You are an optimistic science fiction writer who imagines simple, non-realistic solutions to problems. You invent sinple mathematical relationships, 
        that look valid, regardless of whether they are right or wrong. 
@@ -24,13 +23,14 @@ class OpenAI_Session:
         self.message_history = [ {"role": "system", "content": context_description} ]
         self.replacements = replacements
 
+    '''
     def __add__(self, message):
         """reply = session + message 
         This is an alias for reply = session.chatCompletion(message) 
         where session is this object. 
         Note that string additons are not supported e.g. reply = session + text1 + text2"""
         return self.chatCompletion(message)
-    
+    '''
     def chatCompletion(self, message):
         self.message_history.append({"role": "user", "content": message})
         chat = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=self.message_history)
@@ -39,17 +39,10 @@ class OpenAI_Session:
             reply = reply.replace(old, new)
         self.message_history.append({"role": "assistant", "content": reply})
         return reply
-
-class DebugSession(OpenAI_Session):
-    def chatCompletion(self, message):
-        print(message)
-        return message
  
 class WannabeBot:
     def __init__(self, session):
         self.session = session
-    #    self.name ="WannabBot"
-    #    self.prompt = "Techni:\> "
 
     def introduce(self, product, design):
         return "The product we want to design is a " + product + ". The planned design is as follows: " + design + \
@@ -71,15 +64,13 @@ class WannabeBot:
         def headline(str):
             return "\n## " + str + "\n"
         yield headline("Introduction")
-        yield self.session + self.introduce(product, spec)
+        yield self.session.chatCompletion(self.introduce(product, spec))
         yield headline("Analysis")
-        yield self.session + self.analyse(parameters) 
+        yield self.session.chatCompletion(self.analyse(parameters)) 
         yield headline("Suggested design")
-        yield self.session + self.design(optimize_for) 
+        yield self.session.chatCompletion(self.design(optimize_for)) 
         yield headline("Constants")
-        yield self.session + self.constants()
-    
-
+        yield self.session.chatCompletion(self.constants())
 
 def run(product, spec, optimize_for, parameters, replacements):
     session = OpenAI_Session(CONTEXT, replacements)
@@ -89,7 +80,6 @@ def run(product, spec, optimize_for, parameters, replacements):
         print(response)
         total_response += response
     return total_response
-
 
 
 ############################### GRADIO UI DEFINITION. SHOULD DEPEND ONLY ON THE run() function  ############################### 
@@ -109,7 +99,6 @@ def create_blocks_ui():
         return run(el[product], el[spec], el[optimize_for], el[parameters], GRADIO_LATEX_REPLACEMENTS)
         
     with gr.Blocks() as ui:
-        #logo = gr.components.Image("bot-pic-for-blog-550x330.png", interactive=False, show_label=False)
         product = gr.components.Textbox(label="What is the product to evaluate")
         spec = gr.components.Textbox(label="Describe the design and requirements", lines=4)
         optimize_for = gr.components.Textbox(label="Which parameters to optimize for, e.g. low cost, durability")
@@ -117,9 +106,8 @@ def create_blocks_ui():
         go = gr.Button("Report")
         examples=gr.Examples([[EX_PRODUCT, EX_SPEC, EX_OPTIMIZE_FOR, EX_PARAMETERS]], [product, spec, optimize_for, parameters])
 
-        analysis = gr.components.Markdown(value="TBD", label="Analysis")
+        analysis = gr.components.Markdown(value=" ", label="Analysis")
         go.click(fn=block_run, inputs={product, spec, optimize_for, parameters}, outputs=analysis),
-        
     return ui
 
 
