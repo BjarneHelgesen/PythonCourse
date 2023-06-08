@@ -77,3 +77,7 @@ Modify lesson1.py to use an Abstract Base Class to enforce that all shapes have 
 
 Modify Lesson 5b to make an object for the the rectangle so the main loop has less knowledge about implementation details.
 
+## Lesson 6
+Create function that takes two Elements from Lesson 6b and check if they collide (overlap). 
+
+
