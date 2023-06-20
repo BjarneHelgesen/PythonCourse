@@ -4,7 +4,7 @@ import openai
 
 ############################### OPEN AI SESSION. NO UI DEPENDENCIES ############################### 
 
-openai.api_key = 'sk-cbnVRSFHkT3YTiwG81pUT3BlbkFJrHPbwRWB732XTHIHkQQca'
+openai.api_key = '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'
 
 CONTEXT = """You are an optimistic science fiction writer who imagines simple, non-realistic solutions to problems. You invent sinple mathematical relationships, 
        that look valid, regardless of whether they are right or wrong. 
@@ -12,10 +12,10 @@ CONTEXT = """You are an optimistic science fiction writer who imagines simple, n
        You expect the reader to have basic engineering knowledge, so you don't explain Ohm's Law, or Newton's second law of motion."""
 
 class OpenAI_Session:
-    """This class has an non-traditional, but simple syntax:  It returns the response when a request is added.  
-        session = OpenAI_Session("You are rude intellectual who makes jokes about other people's stupidity")
-        print(session + "Can you explain relativity") # Prints the response to the question, 
-                # E.g. "Yes, I can. It is relatively easy. The question is if you could understand".   
+    """Example usage:
+    session = OpenAI_Session("You are rude intellectual who makes jokes about other people's stupidity")
+        print(session.chatCompletion("Can you explain relativity"))  
+                # Possible response: "Yes, I can. It is relatively easy. The question is if you could understand".   
     """
     def __init__(self, context_description, replacements):
         """context_description is a description of which role the ChaptGPT agent should take, such as helpful, conscise, creative, etc. 
@@ -42,8 +42,8 @@ class WannabeBot:
 
     def analyse(self, parameters):
         """Convenience function to build the analysis string"""
-        return "Please list wild guesses or wishful thinking about the mathematical relationship or proportionality between the following parameters: " + parameters + \
-        "Show all mathematical relationships and symbols in LaTeX notation encapsulated by $ signs."
+        return " the mathematical relationship or proportionality between the following parameters: " + parameters + \
+        "Show all mathemaPlease list wild guesses or wishful thinking abouttical relationships and symbols in LaTeX notation encapsulated by $ signs."
 
     def design(self, optimize_for):
         """Convenience function to build the design string"""
@@ -76,7 +76,7 @@ def run(product, spec, optimize_for, parameters, replacements):
 
 ############################### GRADIO UI DEFINITION. SHOULD DEPEND ONLY ON THE run() function  ############################### 
 EX_PRODUCT="Subsea Rocket"
-EX_SPEC="1 MT cargo, launched from the Mariana Trench"
+EX_SPEC="1 MT cargo, launched from the bottom of the Mariana Trench"
 EX_PARAMETERS="Weight, production cost, number of engines, reliability"
 EX_OPTIMIZE_FOR="Low cost, high reliability, simple design"
 
